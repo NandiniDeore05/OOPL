@@ -1,0 +1,145 @@
+/*STL USE TO EXCUTE STACK AND QUEUE FOR A Singly Linked List.*/
+//Essential to understand basic definitions of por/push_front/back & size &front.
+//MOST IMP--- How to display list using Iteration and function for it.
+// SLL_stack_queue.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+#include<iostream>
+#include<iterator>  //It is working without this header file also but, better to keep it in code.
+#include<list>
+using namespace std;
+void showlist(list <int> disp)
+{
+	list <int> ::iterator i;
+	for (i = disp.begin(); i != disp.end(); ++i)
+		cout << *i << endl;
+}
+int main()
+{
+	int select = 0;//Initialising this select here is essential
+	typedef int element;//Create typedef to make things easier.
+	element e1, e2, e3;
+	list <int> l1;//Defn for creation of a list which will behave like a stack.
+	list <int> l2;//Defn for creation of a list which will behave like a queue.
+	do
+	{
+		int opt;
+		cout << "Enter 1.Stack 2.Queue" << endl;
+		cin >> opt;
+		switch (opt)
+		{
+		case 1:
+			cout << "Stack" << endl;
+			int choose;
+			cout << "Enter your choice: 1.Insert 2.Delete 3.Top 4.DisplayList 5.Count 6.Empty" << endl;
+			cin >> choose;
+			switch (choose)
+			{
+			case 1:
+			{
+				cout << "Enter element to be added" << endl;
+				cin >> e1;
+				l1.push_front(e1);
+				break;
+			}
+			case 2:
+			{
+				cout << "Last entered element gets deleted" << endl;
+				l1.pop_front();
+				break;
+			}
+			case 3:
+			{
+				int fr = l1.front();
+				cout << fr << endl;
+				break;
+			}
+			case 4:
+			{
+				cout << "Display List" << endl;
+				showlist(l1);
+				break;
+			}
+			case 5:
+			{
+				int s = l1.size();
+				cout << "Size is " << s << endl;
+				break;
+			}
+			case 6:
+			{
+				if (l1.empty())
+					cout << "List is empty" << endl;
+				else
+					cout << "List is not empty" << endl;
+			}
+			}
+			break;
+
+		case 2:
+			cout << "Queue" << endl;
+			int choice;
+			cout << "Enter your choice: 1.Insert front 2.Insert end 3.Delete start 4.Delete end 5.Count 6.DislayList 7.Top 8.Empty" << endl;
+			cin >> choice;
+			switch (choice)
+			{
+			case 1:
+			{
+				cout << "Enter element to be added" << endl;
+				cin >> e2;
+				l2.push_front(e2);
+				break;
+			}
+			case 2:
+			{
+				cout << "Enter element to be added" << endl;
+				cin >> e3;
+				l2.push_back(e3);
+				break;
+			}
+			case 3:
+			{
+				cout << "Element at the start gets deleted" << endl;
+				l2.pop_front();
+				break;
+			}
+			case 4:
+			{
+				cout << "Element at the end gets deleted" << endl;
+				l2.pop_back();
+				break;
+			}
+			case 5:
+			{
+				int s = l2.size();
+				cout << "Total numbers of elements currently are " << s << endl;
+				break;
+			}
+			case 6:
+			{
+				cout << "Display list" << endl;
+				showlist(l2);
+				break;
+			}
+			case 7:
+			{
+				cout << "Top" << endl;
+				int front = l2.front();
+				cout << "Current start is " << front << endl;
+				break;
+			}
+			case 8:
+			{
+				if (l2.empty())
+					cout << "List is empty" << endl;
+				else
+					cout << "List is not empty" << endl;
+			}
+			}
+
+		}
+		cout << "Do you want to continue ? Press 1 to continue" << endl;
+		cin >> select;
+
+	} while (select == 1);
+	return 0;
+}
